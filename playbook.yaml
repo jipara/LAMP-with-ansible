@@ -1,3 +1,6 @@
+---
+- name: create e-com website
+  hosts: all
   become: true
   gather_facts: true
   tasks:
