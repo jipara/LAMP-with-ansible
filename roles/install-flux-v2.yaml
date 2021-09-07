@@ -1,5 +1,6 @@
 - name: install flux:v2 cli
   hosts: localhost
+  ignore_errors: yes
   tasks:
     - name: install flux cli
       shell: "curl -s https://raw.githubusercontent.com/fluxcd/flux2/main/install/flux.sh | sudo bash"
