@@ -28,6 +28,7 @@
       set_fact:
         gitops_password: "{{ gitops_password.stdout }}"
         run_once: true
+      delegate_to: 127.0.0.1
 
     - name: create git source
-      shell: "flux create source git flux-system --url=https://github.com/jipara/flux-calico-network.git --username=jipara --password={{ gitops_password }} --branch=master"
+      shell: "flux create source git flux-system --url=https://github.com/jipara/flux-calico-network --username=jipara --password={{ gitops_password }} --branch=master"
