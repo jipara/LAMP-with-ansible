@@ -15,3 +15,6 @@
         - "kubectl version --short --client"
     - name: Check prerequisites
       shell: "flux check --pre"
+
+    - name: install flux latest vesrion
+      shell: "flux install --version=master"
