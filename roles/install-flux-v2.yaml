@@ -21,7 +21,7 @@
       shell: "flux install"
 
     - name: create git source from secretsmanager
-      shell: "aws --region us-east-2 secretsmanager get-secret-value --secret-id=GITHUB_TOKEN | jq -r '.SecretString' | jq -r .password"
+      shell: "aws --region us-east-2 secretsmanager get-secret-value --secret-id=GITHUB_TOKEN1 | jq -r '.SecretString' | jq -r .password"
       register: gitops_password
 
     - name: set-facts
