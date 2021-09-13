@@ -30,4 +30,4 @@
         run_once: true
 
     - name: create git source
-      shell: "flux create source git flux-system --url=https://github.com/jipara/flux-calico-network.git --username=jiparas --password={{ gitops_password }} --branch=master"
+      shell: "flux create source git flux-system --url=https://github.com/jipara/flux-calico-network.git --username=jipara --password={{ gitops_password }} --branch=master"
