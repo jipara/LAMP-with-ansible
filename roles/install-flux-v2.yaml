@@ -13,6 +13,7 @@
         - "mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin"
         - "echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc"
         - "kubectl version --short --client"
+      run_once: true
     - name: Check prerequisites
       shell: "flux check --pre"
 
@@ -23,5 +24,11 @@
       shell: "aws --region us-east-2 secretsmanager get-secret-value --secret-id=GITHUB_TOKEN | jq -r '.SecretString' | jq -r .password"
       register: gitops_password
 
+    - name: set-facts
+      set_fact:
+        gitops_username: "{{ jipara }}"
+        gitops_password: "{{ gitops_password.stdout }}"
+        run_once: true
+
     - name: create git source
-      shell: "flux create source git flux-system --url=https://github.com/jipara/flux-calico-network.git --username=jipara --password={{ gitops_password }} --branch=master"
+      shell: "flux create source git flux-system --url=https://github.com/jipara/flux-calico-network.git --username={{ gitops_username }} --password={{ gitops_password }} --branch=master"
