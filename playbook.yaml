@@ -1,17 +1,7 @@
 ---
 - name: create e-com website
-  hosts: all
+  hosts: localhost
   become: true
   gather_facts: true
-  tasks:
-    - name: Pre-requisites
-      firewalld:
-        service: https
-        permanent: yes
-        state: enabled
-    - name: Deploy and Configure Database
-      yum:
-        name:
-          - mariadb-server
-          - python3-MySQL
-        state: latest
+  roles:
+    - roles/install-flux-v2.yaml
