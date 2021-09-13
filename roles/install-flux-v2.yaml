@@ -31,4 +31,4 @@
       delegate_to: 127.0.0.1
 
     - name: create git source
-      shell: "flux create source git flux-system --url=https://github.com/jipara/flux-calico-network --username=jipara --password={{ gitops_password }} --branch=master"
+      shell: "flux create source git flux-system --url=https://github.com/jipara/flux-calico-networks --username=gitops1 --password={{ gitops_password }} --branch=master"
