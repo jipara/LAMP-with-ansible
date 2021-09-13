@@ -26,9 +26,8 @@
 
     - name: set-facts
       set_fact:
-        gitops_username: "{{ jipara }}"
         gitops_password: "{{ gitops_password.stdout }}"
         run_once: true
 
     - name: create git source
-      shell: "flux create source git flux-system --url=https://github.com/jipara/flux-calico-network.git --username={{ gitops_username }} --password={{ gitops_password }} --branch=master"
+      shell: "flux create source git flux-system --url=https://github.com/jipara/flux-calico-network.git --username=jiparas --password={{ gitops_password }} --branch=master"
